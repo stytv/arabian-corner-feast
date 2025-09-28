@@ -8,6 +8,7 @@ import CategoryMenu from "./pages/CategoryMenu";
 import ProductDetail from "./pages/ProductDetail";
 import NotFound from "./pages/NotFound";
 import { Sidebar } from "./components/Sidebar";
+import BottomNavbar from "./components/BottomNavbar";
 import { useState } from "react";
 
 const queryClient = new QueryClient();
@@ -26,7 +27,7 @@ const App = () => {
               isOpen={isSidebarOpen} 
               onClose={() => setIsSidebarOpen(false)} 
             />
-            <div className={`transition-all duration-300 ${isSidebarOpen ? 'blur-sm brightness-50' : ''}`}>
+            <div className={`transition-all duration-300 pb-20 ${isSidebarOpen ? 'blur-sm brightness-50' : ''}`}>
               <Routes>
                 <Route path="/" element={<Index onMenuOpen={() => setIsSidebarOpen(true)} />} />
                 <Route path="/category/:category" element={<CategoryMenu onMenuOpen={() => setIsSidebarOpen(true)} />} />
@@ -35,6 +36,7 @@ const App = () => {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
+            <BottomNavbar />
           </div>
         </BrowserRouter>
       </TooltipProvider>
