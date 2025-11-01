@@ -345,7 +345,6 @@ export const clubInfo = {
     ],
     benefits: [
       "Mentorship from senior students and industry professionals",
-      "Free access to premium coding platforms (LeetCode, Educative)",
       "Participation in national-level hackathons",
       "Certificates for contributions and achievements",
       "Portfolio-worthy projects and experience",

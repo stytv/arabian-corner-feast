@@ -69,27 +69,27 @@ const Leadership = () => {
       designation: "Faculty Coordinator",
       src: FacultyCoordinator,
     },
-    // {
-    //   quote:
-    //     "Ensures all operational aspects of CODE VIVEKS run seamlessly, managing logistics, resources, and internal coordination.",
-    //   name: "Rehan Hussain",
-    //   designation: "Operations Head",
-    //   src: OperationsHead,
-    // },
-    // {
-    //   quote:
-    //     "Captures the spirit of CODE VIVEKS through photography and visual storytelling, curating memorable moments from all our events.",
-    //   name: "C. Kovidh",
-    //   designation: "Photography Head",
-    //   src: PhotographyHead,
-    // },
-    // {
-    //   quote:
-    //     "Designs and maintains the visual identity of CODE VIVEKS through creative graphics and digital branding materials.",
-    //   name: "Y. Sai Tarun",
-    //   designation: "Designing Head",
-    //   src: DesigningHead,
-    // },
+    {
+      quote:
+        "Ensures all operational aspects of CODE VIVEKS run seamlessly, managing logistics, resources, and internal coordination.",
+      name: "Rehan Hussain",
+      designation: "Operations Head",
+      src: OperationsHead,
+    },
+    {
+      quote:
+        "Captures the spirit of CODE VIVEKS through photography and visual storytelling, curating memorable moments from all our events.",
+      name: "C. Kovidh",
+      designation: "Photography Head",
+      src: PhotographyHead,
+    },
+    {
+      quote:
+        "Designs and maintains the visual identity of CODE VIVEKS through creative graphics and digital branding materials.",
+      name: "Y. Sai Tarun",
+      designation: "Designing Head",
+      src: DesigningHead,
+    },
   ];
 
   return (
