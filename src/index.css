@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Deep space background → changed to pure black */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 95%;
+
+    /* Glass cards with slight transparency */
+    --card: 230 30% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 230 30% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Light blue primary */
+    --primary: 200 100% 65%;
+    --primary-foreground: 230 40% 3%;
+
+    /* Dark orange secondary */
+    --secondary: 25 100% 45%;
+    --secondary-foreground: 230 40% 3%;
+
+    /* Muted grays */
+    --muted: 230 20% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    /* Accent - lighter blue */
+    --accent: 200 90% 70%;
+    --accent-foreground: 230 40% 3%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Neon borders */
+    --border: 200 100% 65%;
+    --input: 230 20% 20%;
+    --ring: 200 100% 65%;
+
+    --radius: 0.75rem;
+
+    /* Custom glow colors */
+    --glow-primary: 200 100% 65%;
+    --glow-secondary: 25 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Starfield background animation */
+  @keyframes starfield {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100px);
+    }
+  }
+
+  /* Glow pulse animation */
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.3),
+                  0 0 40px hsl(var(--glow-primary) / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.5),
+                  0 0 60px hsl(var(--glow-primary) / 0.3);
+    }
+  }
+
+  /* Text glow */
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--glow-primary) / 0.5),
+                 0 0 40px hsl(var(--glow-primary) / 0.3);
+  }
+
+  .text-glow-secondary {
+    text-shadow: 0 0 20px hsl(var(--glow-secondary) / 0.5),
+                 0 0 40px hsl(var(--glow-secondary) / 0.3);
+  }
+
+  /* Glass morphism */
+  .glass {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.2);
+  }
+
+  .glass-strong {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+
+  /* Neon border */
+  .neon-border {
+    border: 1px solid hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 10px hsl(var(--glow-primary) / 0.3),
+                inset 0 0 10px hsl(var(--glow-primary) / 0.1);
+  }
+
+  .neon-border-secondary {
+    border: 1px solid hsl(var(--secondary) / 0.5);
+    box-shadow: 0 0 10px hsl(var(--glow-secondary) / 0.3),
+                inset 0 0 10px hsl(var(--glow-secondary) / 0.1);
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.5);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
