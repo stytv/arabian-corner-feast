@@ -1,5 +1,5 @@
 import { clubInfo } from "@/data/content";
-import { Mail, Instagram, Linkedin, Github, Youtube } from "lucide-react";
+import { Mail, Instagram, Linkedin, Github } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -70,15 +70,6 @@ const Contact = () => {
                 aria-label="GitHub"
               >
                 <Github className="w-5 h-5 text-primary" />
-              </a>
-              <a
-                href={clubInfo.social.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 glass rounded-lg neon-border hover:scale-110 transition-transform"
-                aria-label="YouTube"
-              >
-                <Youtube className="w-5 h-5 text-primary" />
               </a>
             </div>
           </div>

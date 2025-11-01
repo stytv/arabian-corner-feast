@@ -3,12 +3,15 @@ import { clubInfo } from "@/data/content";
 import * as Icons from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { X } from "lucide-react";
 
 const Teams = () => {
   const [active, setActive] = useState<typeof clubInfo.teams[0] | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation<HTMLDivElement>();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation<HTMLUListElement>();
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -119,12 +122,22 @@ const Teams = () => {
 
       <section id="teams" className="py-20 relative">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
+          <div 
+            ref={titleRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              titleVisible ? 'scroll-reveal' : 'opacity-0'
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-glow">Our Teams</h2>
             <p className="text-muted-foreground text-lg">Specialized teams for every tech domain</p>
           </div>
 
-          <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ul 
+            ref={cardsRef}
+            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 ${
+              cardsVisible ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
             {clubInfo.teams.map((team, index) => {
               const IconComponent = Icons[team.icon as keyof typeof Icons] as React.ComponentType<{ className?: string }>;
               
@@ -133,13 +146,19 @@ const Teams = () => {
                   key={team.id}
                   layoutId={`card-${team.name}-${id}`}
                   onClick={() => setActive(team)}
-                  className="glass-strong rounded-2xl p-6 neon-border hover:scale-105 transition-all cursor-pointer group animate-slide-up list-none"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="glass-strong rounded-2xl p-6 neon-border hover-lift hover-glow cursor-pointer group list-none"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={cardsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <div className={`p-3 rounded-lg ${team.color === "primary" ? "bg-primary/20" : team.color === "secondary" ? "bg-secondary/20" : "bg-accent/20"}`}>
+                    <motion.div 
+                      className={`p-3 rounded-lg ${team.color === "primary" ? "bg-primary/20" : team.color === "secondary" ? "bg-secondary/20" : "bg-accent/20"}`}
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                    >
                       <IconComponent className={`w-6 h-6 ${team.color === "primary" ? "text-primary" : team.color === "secondary" ? "text-secondary" : "text-accent"}`} />
-                    </div>
+                    </motion.div>
                     <motion.h3
                       layoutId={`title-${team.name}-${id}`}
                       className="text-xl font-bold"

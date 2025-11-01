@@ -96,12 +96,13 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-screen px-4 py-4 hidden md:flex md:flex-col glass-strong border-r border-primary/20 w-[300px] shrink-0 fixed left-0 top-0 z-50",
+          "h-screen px-4 py-4 hidden lg:flex lg:flex-col glass-strong border-r border-primary/20 w-[300px] shrink-0 fixed left-0 top-0 z-50",
           className
         )}
         animate={{
           width: animate ? (open ? "300px" : "80px") : "300px",
         }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
       >
@@ -123,16 +124,19 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-16 px-4 py-4 flex flex-row md:hidden items-center justify-between glass-strong w-full fixed top-0 left-0 right-0 z-50 border-b border-primary/20"
+          "h-16 px-4 py-4 flex flex-row lg:hidden items-center justify-between glass-strong w-full fixed top-0 left-0 right-0 z-50 border-b border-primary/20"
         )}
       >
         <div className="text-xl font-bold text-glow">CODE VIVEKS</div>
-        <div className="flex justify-end z-20">
+        <motion.div 
+          className="flex justify-end z-20"
+          whileTap={{ scale: 0.9 }}
+        >
           <Menu
-            className="text-foreground cursor-pointer"
+            className="text-foreground cursor-pointer hover:text-primary transition-colors"
             onClick={() => setOpen(!open)}
           />
-        </div>
+        </motion.div>
         <AnimatePresence>
           {open && (
             <motion.div
@@ -176,18 +180,24 @@ export const SidebarLink = ({
     <a
       href={link.href}
       className={cn(
-        "flex items-center justify-start gap-2 group/sidebar py-3 px-2 rounded-lg hover:bg-primary/10 transition-all",
+        "flex items-center justify-start gap-2 group/sidebar py-3 px-2 rounded-lg hover:bg-primary/10 transition-all hover:scale-105",
         className
       )}
       {...props}
     >
-      {link.icon}
+      <motion.div
+        whileHover={{ scale: 1.1, rotate: 5 }}
+        transition={{ duration: 0.2 }}
+      >
+        {link.icon}
+      </motion.div>
 
       <motion.span
         animate={{
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
+        transition={{ duration: 0.2 }}
         className="text-foreground text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
       >
         {link.label}
