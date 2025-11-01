@@ -129,9 +129,19 @@ export const MobileSidebar = ({
       >
         <div className="text-xl font-bold text-glow">CODE VIVEKS</div>
         <motion.div 
-          className="flex justify-end z-20"
-          whileTap={{ scale: 0.9 }}
+          className="flex items-center gap-3 z-20"
+          whileTap={{ scale: 0.95 }}
         >
+          <motion.a
+            href="https://forms.gle/hPaXQNf8nhrdas3M8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold text-sm hover-glow transition-all"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Join
+          </motion.a>
           <Menu
             className="text-foreground cursor-pointer hover:text-primary transition-colors"
             onClick={() => setOpen(!open)}

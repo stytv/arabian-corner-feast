@@ -10,6 +10,7 @@ import Leadership from "@/components/Leadership";
 import Join from "@/components/Join";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
+import ArtisticBackground from "@/components/ArtisticBackground";
 import logo from "@/assets/logo.png"; // ✅ Import your logo
 
 const Index = () => {
@@ -33,7 +34,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-x-hidden flex w-full">
-      <div className="starfield" />
+      <ArtisticBackground />
       
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10">
@@ -62,7 +63,7 @@ const Index = () => {
         </SidebarBody>
       </Sidebar>
 
-      <main className="flex-1 w-full md:ml-[80px]">
+      <main className="flex-1 w-full lg:ml-[80px]">
         <Hero />
         <About />
         <Teams />
