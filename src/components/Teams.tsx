@@ -14,18 +14,11 @@ const Teams = () => {
   const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation<HTMLUListElement>();
 
   useEffect(() => {
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setActive(null);
-      }
-    }
-
-    if (active) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActive(null);
+    };
+    if (active) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [active]);
@@ -34,113 +27,132 @@ const Teams = () => {
 
   return (
     <>
+      {/* Backdrop */}
       <AnimatePresence>
         {active && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm h-full w-full z-[100]"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 bg-black/80 backdrop-blur-md z-[90]"
           />
         )}
       </AnimatePresence>
-      
+
+      {/* Modal */}
       <AnimatePresence>
         {active && (
-          <div className="fixed inset-0 grid place-items-center z-[100] p-4">
-            <motion.button
-              key={`button-${active.name}-${id}`}
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0, transition: { duration: 0.05 } }}
-              className="flex absolute top-4 right-4 items-center justify-center glass-strong neon-border rounded-full h-10 w-10 hover:scale-110 transition-transform"
+          <motion.div
+            key={`modal-${active.name}`}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+            initial={{ opacity: 0, scale: 0.9, y: 40 }}
+            animate={{ opacity: 1, scale: 1, y: 0, transition: { type: 'spring', damping: 25, stiffness: 250 } }}
+            exit={{ opacity: 0, scale: 0.9, y: 40, transition: { duration: 0.2 } }}
+          >
+            {/* Close Button */}
+            <button
               onClick={() => setActive(null)}
+              className="absolute top-4 right-4 z-[110] flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 rounded-full h-10 w-10 transition-transform hover:scale-110"
             >
-              <X className="h-5 w-5 text-primary" />
-            </motion.button>
-            
+              <X className="h-5 w-5 text-white" />
+            </button>
+
+            {/* Card */}
             <motion.div
-              layoutId={`card-${active.name}-${id}`}
               ref={ref}
-              className="w-full max-w-[600px] h-full md:h-fit md:max-h-[90%] flex flex-col glass-strong neon-border rounded-3xl overflow-hidden"
+              layoutId={`card-${active.name}-${id}`}
+              className="relative w-full max-w-[600px] max-h-[85vh] overflow-y-auto glass-strong neon-border rounded-3xl shadow-2xl scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent"
             >
-              <div className="p-6 overflow-auto">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`p-4 rounded-lg neon-border ${active.color === "primary" ? "bg-primary/20" : active.color === "secondary" ? "bg-secondary/20" : "bg-accent/20"}`}>
+              <div className="p-6 space-y-6">
+                <div className="flex items-center gap-4">
+                  <div
+                    className={`p-4 rounded-lg neon-border ${
+                      active.color === "primary"
+                        ? "bg-primary/20"
+                        : active.color === "secondary"
+                        ? "bg-secondary/20"
+                        : "bg-accent/20"
+                    }`}
+                  >
                     {(() => {
-                      const IconComponent = Icons[active.icon as keyof typeof Icons] as React.ComponentType<{ className?: string }>;
-                      return <IconComponent className={`w-8 h-8 ${active.color === "primary" ? "text-primary" : active.color === "secondary" ? "text-secondary" : "text-accent"}`} />;
+                      const IconComponent =
+                        Icons[active.icon as keyof typeof Icons];
+                      return (
+                        <IconComponent
+                          className={`w-8 h-8 ${
+                            active.color === "primary"
+                              ? "text-primary"
+                              : active.color === "secondary"
+                              ? "text-secondary"
+                              : "text-accent"
+                          }`}
+                        />
+                      );
                     })()}
                   </div>
                   <div>
-                    <motion.h3
-                      layoutId={`title-${active.name}-${id}`}
-                      className="text-2xl font-bold text-glow"
-                    >
-                      {active.name}
-                    </motion.h3>
-                    <motion.p
-                      layoutId={`description-${active.description}-${id}`}
-                      className="text-muted-foreground"
-                    >
-                      {active.description}
-                    </motion.p>
+                    <h3 className="text-2xl font-bold text-glow">{active.name}</h3>
+                    <p className="text-muted-foreground">{active.description}</p>
                   </div>
                 </div>
 
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-lg font-semibold text-primary mb-3">Key Focus Areas</h4>
-                    <ul className="space-y-2">
-                      {active.focus.map((item, i) => (
-                        <li key={i} className="text-foreground/80 flex items-start gap-2">
-                          <span className="text-primary mt-0.5">▸</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                {/* Focus Areas */}
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-3">Key Focus Areas</h4>
+                  <ul className="space-y-2">
+                    {active.focus.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-foreground/80">
+                        <span className="text-primary mt-0.5">▸</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                  <div>
-                    <h4 className="text-lg font-semibold text-secondary mb-3">Target Outcomes</h4>
-                    <ul className="space-y-2">
-                      {active.outcomes.map((item, i) => (
-                        <li key={i} className="text-foreground/80 flex items-start gap-2">
-                          <span className="text-secondary mt-0.5">▸</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                {/* Outcomes */}
+                <div>
+                  <h4 className="text-lg font-semibold text-secondary mb-3">Target Outcomes</h4>
+                  <ul className="space-y-2">
+                    {active.outcomes.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-foreground/80">
+                        <span className="text-secondary mt-0.5">▸</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
 
+      {/* Teams Grid Section */}
       <section id="teams" className="py-20 relative">
         <div className="container mx-auto px-4">
-          <div 
+          <div
             ref={titleRef}
             className={`text-center mb-16 transition-all duration-700 ${
-              titleVisible ? 'scroll-reveal' : 'opacity-0'
+              titleVisible ? "scroll-reveal" : "opacity-0"
             }`}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-glow">Our Teams</h2>
-            <p className="text-muted-foreground text-lg">Specialized teams for every tech domain</p>
+            <p className="text-muted-foreground text-lg">
+              Specialized teams for every tech domain
+            </p>
           </div>
 
-          <ul 
+          <ul
             ref={cardsRef}
-            className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 ${
-              cardsVisible ? 'opacity-100' : 'opacity-0'
+            className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 ${
+              cardsVisible ? "opacity-100" : "opacity-0"
             }`}
           >
             {clubInfo.teams.map((team, index) => {
-              const IconComponent = Icons[team.icon as keyof typeof Icons] as React.ComponentType<{ className?: string }>;
-              
+              const IconComponent =
+                Icons[team.icon as keyof typeof Icons];
+
               return (
                 <motion.li
                   key={team.id}
@@ -148,37 +160,50 @@ const Teams = () => {
                   onClick={() => setActive(team)}
                   className="glass-strong rounded-2xl p-6 neon-border hover-lift hover-glow cursor-pointer group list-none"
                   initial={{ opacity: 0, y: 50 }}
-                  animate={cardsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  animate={
+                    cardsVisible
+                      ? { opacity: 1, y: 0 }
+                      : { opacity: 0, y: 50 }
+                  }
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <motion.div 
-                      className={`p-3 rounded-lg ${team.color === "primary" ? "bg-primary/20" : team.color === "secondary" ? "bg-secondary/20" : "bg-accent/20"}`}
+                    <motion.div
+                      className={`p-3 rounded-lg ${
+                        team.color === "primary"
+                          ? "bg-primary/20"
+                          : team.color === "secondary"
+                          ? "bg-secondary/20"
+                          : "bg-accent/20"
+                      }`}
                       whileHover={{ rotate: 360, scale: 1.1 }}
                       transition={{ duration: 0.5 }}
                     >
-                      <IconComponent className={`w-6 h-6 ${team.color === "primary" ? "text-primary" : team.color === "secondary" ? "text-secondary" : "text-accent"}`} />
+                      <IconComponent
+                        className={`w-6 h-6 ${
+                          team.color === "primary"
+                            ? "text-primary"
+                            : team.color === "secondary"
+                            ? "text-secondary"
+                            : "text-accent"
+                        }`}
+                      />
                     </motion.div>
-                    <motion.h3
-                      layoutId={`title-${team.name}-${id}`}
-                      className="text-xl font-bold"
-                    >
-                      {team.name}
-                    </motion.h3>
+                    <h3 className="text-xl font-bold">{team.name}</h3>
                   </div>
 
-                  <motion.p
-                    layoutId={`description-${team.description}-${id}`}
-                    className="text-foreground/70 mb-4"
-                  >
-                    {team.description}
-                  </motion.p>
+                  <p className="text-foreground/70 mb-4">{team.description}</p>
 
                   <div className="space-y-2">
-                    <p className="text-sm font-semibold text-muted-foreground">Key Focus:</p>
+                    <p className="text-sm font-semibold text-muted-foreground">
+                      Key Focus:
+                    </p>
                     <ul className="space-y-1">
                       {team.focus.slice(0, 2).map((item, i) => (
-                        <li key={i} className="text-sm text-foreground/60 flex items-start gap-2">
+                        <li
+                          key={i}
+                          className="text-sm text-foreground/60 flex items-start gap-2"
+                        >
                           <span className="text-primary mt-0.5">▸</span>
                           <span>{item}</span>
                         </li>

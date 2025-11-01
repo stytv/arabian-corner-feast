@@ -34,7 +34,7 @@ export const AnimatedTestimonials = ({
 
   useEffect(() => {
     if (autoplay) {
-      const interval = setInterval(handleNext, 3000);
+      const interval = setInterval(handleNext, 2000);
       return () => clearInterval(interval);
     }
   }, [autoplay]);

@@ -119,63 +119,32 @@ export const MobileSidebar = ({
   className?: string;
   children: React.ReactNode;
 }) => {
-  const { open, setOpen } = useSidebar();
   return (
     <>
+      {/* ✅ Simple Top Bar — Only Join Button */}
       <div
         className={cn(
           "h-16 px-4 py-4 flex flex-row lg:hidden items-center justify-between glass-strong w-full fixed top-0 left-0 right-0 z-50 border-b border-primary/20"
         )}
       >
         <div className="text-xl font-bold text-glow">CODE VIVEKS</div>
-        <motion.div 
-          className="flex items-center gap-3 z-20"
+
+        {/* ✅ Only Join Button (Removed Menu & Sidebar Drawer) */}
+        <motion.a
+          href="https://forms.gle/hPaXQNf8nhrdas3M8"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold text-sm hover-glow transition-all"
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <motion.a
-            href="https://forms.gle/hPaXQNf8nhrdas3M8"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold text-sm hover-glow transition-all"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Join
-          </motion.a>
-          <Menu
-            className="text-foreground cursor-pointer hover:text-primary transition-colors"
-            onClick={() => setOpen(!open)}
-          />
-        </motion.div>
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ x: "-100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: "-100%", opacity: 0 }}
-              transition={{
-                duration: 0.3,
-                ease: "easeInOut",
-              }}
-              className={cn(
-                "fixed h-full w-full inset-0 glass-strong p-10 z-[100] flex flex-col justify-between",
-                className
-              )}
-            >
-              <div
-                className="absolute right-10 top-10 z-50 text-foreground cursor-pointer"
-                onClick={() => setOpen(!open)}
-              >
-                <X />
-              </div>
-              {children}
-            </motion.div>
-          )}
-        </AnimatePresence>
+          Join
+        </motion.a>
       </div>
     </>
   );
 };
+
 
 export const SidebarLink = ({
   link,

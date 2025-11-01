@@ -60,8 +60,6 @@ const Join = () => {
         {/* Application CTA */}
         <div className="glass-strong rounded-2xl p-8 neon-border text-center mb-12 animate-fade-in">
           <h3 className="text-3xl font-bold mb-4 text-glow">Ready to Apply?</h3>
-          <p className="text-lg text-muted-foreground mb-2">Application Deadline:</p>
-          <p className="text-2xl font-bold text-secondary mb-6">{clubInfo.contact.deadline}</p>
           <Button
             size="lg"
             onClick={() => window.open(clubInfo.contact.googleForm, "_blank")}
