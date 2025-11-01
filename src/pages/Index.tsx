@@ -66,9 +66,9 @@ const Index = () => {
       <main className="flex-1 w-full lg:ml-[80px]">
         <Hero />
         <About />
+        <Leadership />
         <Teams />
         <Events />
-        <Leadership />
         <Join />
         <Projects />
         <Contact />

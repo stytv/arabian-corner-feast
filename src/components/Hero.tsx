@@ -79,7 +79,7 @@ const Hero = () => {
             
             {/* Floating badges */}
             <div className="absolute -top-4 -right-4 glass-strong rounded-lg p-3 neon-border-secondary animate-float">
-              <div className="text-sm font-semibold text-secondary">5 Teams</div>
+              <div className="text-sm font-semibold text-secondary">6 Teams</div>
             </div>
             <div className="absolute -bottom-4 -left-4 glass-strong rounded-lg p-3 neon-border animate-float" style={{ animationDelay: "0.5s" }}>
               <div className="text-sm font-semibold text-primary">150+ Members</div>
