@@ -2,12 +2,12 @@ import { clubInfo } from "@/data/content";
 import { Target, Lightbulb } from "lucide-react";
 import * as Icons from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import { memo } from "react";
 
-const About = () => {
+const About = memo(() => {
   return (
     <section id="about" className="py-20 relative">
       <div className="container mx-auto px-4">
-        {/* Title */}
         <div className="text-center mb-16 animate-fadeInUp">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient text-glow">
             Vision & Mission
@@ -17,7 +17,6 @@ const About = () => {
           </p>
         </div>
 
-        {/* Vision & Mission */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           <AnimatedSection direction="left">
             <div className="neumorphic rounded-2xl p-8 glow-primary hover:scale-[1.02] transition-all">
@@ -50,7 +49,6 @@ const About = () => {
           </AnimatedSection>
         </div>
 
-        {/* Core Objectives */}
         <div className="animate-fadeInUp" style={{ animationDelay: "0.2s" }}>
           <h3 className="text-3xl font-bold text-center mb-8 text-gradient text-glow">
             Core Objectives
@@ -64,9 +62,10 @@ const About = () => {
                 }>;
               return (
                 <div
-                  key={index}
+                  key={`objective-${index}`}
                   className="glass rounded-xl p-6 glow-primary hover:glow-primary hover:scale-105 transition-all group"
                   style={{ animationDelay: `${index * 0.1}s` }}
+                  data-testid={`objective-${index}`}
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-secondary/10 transition-colors">
@@ -84,6 +83,8 @@ const About = () => {
       </div>
     </section>
   );
-};
+});
+
+About.displayName = "About";
 
 export default About;

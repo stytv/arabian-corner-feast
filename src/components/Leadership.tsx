@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useState, memo, useMemo } from "react";
 import { clubInfo } from "@/data/content";
 import { ChevronDown, ChevronUp, Users } from "lucide-react";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
-// ✅ Leadership images (all local assets)
 import President from "@/assets/president.jpg";
 import Secretary from "@/assets/Secretary.jpg";
 import ViceAndTreasurer from "@/assets/visetreasurer.jpg";
@@ -15,11 +14,10 @@ import DesigningHead from "@/assets/logo.png";
 import FacultyCoordinator from "@/assets/logo.png";
 import Technical from "@/assets/Technical.jpg";
 
-const Leadership = () => {
+const Leadership = memo(() => {
   const [expandedRole, setExpandedRole] = useState<string | null>(null);
 
-  // ✅ Leadership testimonials data
-  const leadershipTestimonials = [
+  const leadershipTestimonials = useMemo(() => [
     {
       quote:
         "As the President and Founder of CODE VIVEKS, I strive to foster innovation, leadership, and a culture of continuous learning within our club.",
@@ -36,7 +34,7 @@ const Leadership = () => {
     },
     {
       quote:
-        "Assists the Secretary in administrative tasks while managing the club’s finances with transparency and accountability.",
+        "Assists the Secretary in administrative tasks while managing the club's finances with transparency and accountability.",
       name: "Sakshi & Nikhil",
       designation: "Vice-Secretary & Treasurer",
       src: ViceAndTreasurer,
@@ -90,12 +88,11 @@ const Leadership = () => {
       designation: "Designing Head",
       src: DesigningHead,
     },
-  ];
+  ], []);
 
   return (
     <section id="leadership" className="py-20 relative">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-glow">
             Core Community
@@ -105,10 +102,8 @@ const Leadership = () => {
           </p>
         </div>
 
-        {/* Animated Testimonials */}
         <AnimatedTestimonials testimonials={leadershipTestimonials} autoplay />
 
-        {/* Organizational Structure */}
         <div className="text-center mt-16 mb-12">
           <h3 className="text-3xl md:text-4xl font-bold mb-4 text-glow">
             Organizational Structure
@@ -119,7 +114,6 @@ const Leadership = () => {
         </div>
 
         <div className="max-w-4xl mx-auto space-y-4">
-          {/* President */}
           <div className="glass-strong rounded-2xl p-6 neon-border text-center animate-slide-up">
             <div className="inline-flex items-center gap-2 mb-2">
               <Users className="w-5 h-5 text-primary" />
@@ -130,12 +124,10 @@ const Leadership = () => {
             </p>
           </div>
 
-          {/* Connector Line */}
           <div className="flex justify-center">
             <div className="w-0.5 h-8 bg-gradient-to-b from-primary to-secondary" />
           </div>
 
-          {/* Core Committee */}
           <div className="glass rounded-xl p-4 border border-secondary/30 text-center animate-fade-in">
             <h4 className="font-semibold text-secondary mb-2">
               Core Committee
@@ -143,7 +135,7 @@ const Leadership = () => {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
               {clubInfo.leadership.structure.slice(1).map((position, index) => (
                 <div
-                  key={index}
+                  key={`position-${position.role}-${index}`}
                   className={`glass-strong rounded-lg p-3 cursor-pointer hover:scale-105 transition-all neon-border ${
                     expandedRole === position.role ? "bg-primary/10" : ""
                   }`}
@@ -152,6 +144,7 @@ const Leadership = () => {
                       expandedRole === position.role ? null : position.role
                     )
                   }
+                  data-testid={`role-${position.role.toLowerCase().replace(/\s+/g, '-')}`}
                 >
                   <p className="text-sm font-semibold mb-1">{position.role}</p>
                   {expandedRole === position.role ? (
@@ -164,7 +157,6 @@ const Leadership = () => {
             </div>
           </div>
 
-          {/* Expanded Role Details */}
           {expandedRole && (
             <div className="glass-strong rounded-2xl p-6 neon-border animate-slide-up">
               <h4 className="text-xl font-bold mb-4 text-primary">
@@ -174,7 +166,7 @@ const Leadership = () => {
                 {clubInfo.leadership.structure
                   .find((s) => s.role === expandedRole)
                   ?.responsibilities.map((resp, index) => (
-                    <li key={index} className="flex items-start gap-2">
+                    <li key={`resp-${index}`} className="flex items-start gap-2">
                       <span className="text-secondary mt-1">▸</span>
                       <span className="text-foreground/80">{resp}</span>
                     </li>
@@ -183,18 +175,16 @@ const Leadership = () => {
             </div>
           )}
 
-          {/* Connector */}
           <div className="flex justify-center">
             <div className="w-0.5 h-8 bg-gradient-to-b from-secondary to-primary" />
           </div>
 
-          {/* Team Leads */}
           <div className="glass rounded-xl p-6 border border-primary/30 text-center animate-fade-in">
             <h4 className="font-semibold text-primary mb-3">6 Team Leads</h4>
             <div className="grid grid-cols-2 md:grid-cols-6 gap-2">
               {clubInfo.teams.map((team, index) => (
                 <div
-                  key={index}
+                  key={`team-${team.name}-${index}`}
                   className="glass-strong rounded-lg p-2 text-xs hover:scale-105 transition-all"
                 >
                   {team.name}
@@ -209,6 +199,8 @@ const Leadership = () => {
       </div>
     </section>
   );
-};
+});
+
+Leadership.displayName = "Leadership";
 
 export default Leadership;
