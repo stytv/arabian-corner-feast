@@ -8,93 +8,94 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* ========== NEUMORPHISM (Soft 3D Design) ========== */
-    --background: 190 35% 92%;
-    --foreground: 190 30% 15%;
+    /* ========== DARK MODE (macOS-inspired) ========== */
+    --background: 220 13% 13%;
+    --foreground: 0 0% 98%;
 
-    /* Neumorphic cards */
-    --card: 190 35% 92%;
-    --card-foreground: 190 30% 15%;
+    /* Frosted glass cards */
+    --card: 220 13% 18%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 190 35% 92%;
-    --popover-foreground: 190 30% 15%;
+    --popover: 220 13% 18%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Teal primary */
-    --primary: 184 65% 55%;
+    /* macOS blue accent */
+    --primary: 211 100% 60%;
     --primary-foreground: 0 0% 100%;
 
-    /* Lavender accent */
-    --secondary: 280 45% 70%;
+    /* macOS orange accent */
+    --secondary: 25 95% 58%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Soft muted tones */
-    --muted: 190 25% 85%;
-    --muted-foreground: 190 15% 45%;
+    /* Subtle muted tones */
+    --muted: 220 13% 25%;
+    --muted-foreground: 0 0% 70%;
 
-    /* Accent lavender */
-    --accent: 280 45% 75%;
-    --accent-foreground: 190 30% 15%;
+    /* Accent blue */
+    --accent: 211 100% 65%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 65% 60%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Subtle borders */
-    --border: 190 20% 80%;
-    --input: 190 30% 88%;
-    --ring: 184 65% 55%;
+    /* Softer borders */
+    --border: 220 13% 30%;
+    --input: 220 13% 25%;
+    --ring: 211 100% 60%;
 
-    --radius: 1.5rem;
+    --radius: 1rem;
 
-    /* Neumorphism Shadows */
-    --neu-shadow-light: 8px 8px 16px hsl(190 35% 80%), -8px -8px 16px hsl(0 0% 100%);
-    --neu-shadow-pressed: inset 4px 4px 8px hsl(190 35% 80%), inset -4px -4px 8px hsl(0 0% 100%);
-    --neu-shadow-hover: 12px 12px 24px hsl(190 35% 78%), -12px -12px 24px hsl(0 0% 100%);
-    --neu-shadow-subtle: 4px 4px 8px hsl(190 35% 85%), -4px -4px 8px hsl(0 0% 100%);
-    
-    /* Neumorphic backgrounds */
-    --neu-bg: 190 35% 92%;
-    --neu-elevated: 190 35% 94%;
-    --neu-pressed: 190 35% 88%;
+    /* macOS glow effects */
+    --glow-primary: 211 100% 60%;
+    --glow-secondary: 25 95% 58%;
 
-    /* ========== DARK MODE (Neumorphism) ========== */
-    &.dark {
-      --background: 190 25% 18%;
-      --foreground: 190 20% 95%;
+    /* Glassmorphism */
+    --glass-bg: 220 13% 18% / 0.7;
+    --glass-border: 0 0% 100% / 0.1;
 
-      --card: 190 25% 18%;
-      --card-foreground: 190 20% 95%;
+    /* ========== LIGHT MODE (macOS-inspired) ========== */
+    &:not(.dark) {
+      --background: 0 0% 98%;
+      --foreground: 0 0% 13%;
 
-      --popover: 190 25% 18%;
-      --popover-foreground: 190 20% 95%;
+      /* Frosted white cards */
+      --card: 0 0% 100%;
+      --card-foreground: 0 0% 13%;
 
-      --primary: 184 65% 55%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 0 0% 13%;
+
+      /* macOS blue */
+      --primary: 211 100% 50%;
       --primary-foreground: 0 0% 100%;
 
-      --secondary: 280 45% 60%;
+      /* macOS orange */
+      --secondary: 25 95% 53%;
       --secondary-foreground: 0 0% 100%;
 
-      --muted: 190 20% 25%;
-      --muted-foreground: 190 15% 65%;
+      /* Light muted tones */
+      --muted: 0 0% 96%;
+      --muted-foreground: 0 0% 45%;
 
-      --accent: 280 45% 65%;
-      --accent-foreground: 0 0% 100%;
+      /* Accent */
+      --accent: 211 100% 96%;
+      --accent-foreground: 211 100% 50%;
 
-      --destructive: 0 65% 55%;
+      --destructive: 0 84% 60%;
       --destructive-foreground: 0 0% 100%;
 
-      --border: 190 20% 28%;
-      --input: 190 25% 22%;
-      --ring: 184 65% 55%;
+      /* Subtle borders */
+      --border: 0 0% 90%;
+      --input: 0 0% 93%;
+      --ring: 211 100% 50%;
 
-      /* Neumorphism Shadows - Dark */
-      --neu-shadow-light: 6px 6px 12px hsl(190 25% 12%), -6px -6px 12px hsl(190 25% 24%);
-      --neu-shadow-pressed: inset 3px 3px 6px hsl(190 25% 12%), inset -3px -3px 6px hsl(190 25% 24%);
-      --neu-shadow-hover: 10px 10px 20px hsl(190 25% 10%), -10px -10px 20px hsl(190 25% 26%);
-      --neu-shadow-subtle: 3px 3px 6px hsl(190 25% 14%), -3px -3px 6px hsl(190 25% 22%);
-      
-      --neu-bg: 190 25% 18%;
-      --neu-elevated: 190 25% 22%;
-      --neu-pressed: 190 25% 16%;
+      /* Light mode glow */
+      --glow-primary: 211 100% 50%;
+      --glow-secondary: 25 95% 53%;
+
+      /* Light glassmorphism */
+      --glass-bg: 0 0% 100% / 0.8;
+      --glass-border: 0 0% 0% / 0.05;
     }
   }
 }
@@ -191,59 +192,42 @@ All colors MUST be HSL.
     color: hsl(var(--secondary));
   }
 
-  /* Neumorphism Effects */
-  .neu-flat {
-    background: hsl(var(--neu-bg));
-    box-shadow: var(--neu-shadow-subtle);
-    border-radius: var(--radius);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* macOS-style glassmorphism */
+  .glass {
+    background: rgba(35, 38, 45, 0.5);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
-  .neu-raised {
-    background: hsl(var(--neu-bg));
-    box-shadow: var(--neu-shadow-light);
-    border-radius: var(--radius);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  .glass-strong {
+    background: rgba(35, 38, 45, 0.75);
+    backdrop-filter: blur(60px) saturate(180%);
+    -webkit-backdrop-filter: blur(60px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
 
-  .neu-raised:hover {
-    box-shadow: var(--neu-shadow-hover);
-    transform: translateY(-1px);
+  /* Light mode glass - macOS frosted glass */
+  :root:not(.dark) .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 
-  .neu-pressed {
-    background: hsl(var(--neu-pressed));
-    box-shadow: var(--neu-shadow-pressed);
-    border-radius: var(--radius);
-  }
-
-  .neu-elevated {
-    background: hsl(var(--neu-elevated));
-    box-shadow: var(--neu-shadow-light);
-    border-radius: var(--radius);
-  }
-
-  /* Neumorphic Card Cutout */
-  .neu-card-cutout {
-    background: hsl(var(--neu-bg));
-    box-shadow: var(--neu-shadow-light);
-    border-radius: calc(var(--radius) * 1.5);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .neu-card-cutout::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(145deg, 
-      hsl(var(--neu-elevated) / 0.5) 0%, 
-      hsl(var(--neu-bg)) 50%, 
-      hsl(var(--neu-pressed) / 0.3) 100%);
-    pointer-events: none;
+  :root:not(.dark) .glass-strong {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(60px) saturate(180%);
+    -webkit-backdrop-filter: blur(60px) saturate(180%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
   }
 
   /* Neon border */
@@ -328,37 +312,25 @@ All colors MUST be HSL.
     transform: translateY(-1px);
   }
 
-  /* Neumorphic Button Styles */
-  .neu-button {
-    background: hsl(var(--neu-bg));
-    box-shadow: var(--neu-shadow-light);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
+  /* macOS tactile button effect */
+  .macos-button {
+    background: linear-gradient(180deg, 
+      hsl(var(--primary)) 0%, 
+      hsl(var(--primary) / 0.9) 100%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .neu-button:hover {
-    box-shadow: var(--neu-shadow-hover);
-    transform: translateY(-2px);
+  .macos-button:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
   }
 
-  .neu-button:active {
-    box-shadow: var(--neu-shadow-pressed);
-    transform: translateY(0);
-  }
-
-  .neu-button-primary {
-    background: linear-gradient(145deg, 
-      hsl(var(--primary) / 0.95), 
-      hsl(var(--primary) / 0.85));
-    box-shadow: var(--neu-shadow-light);
-    color: hsl(var(--primary-foreground));
-  }
-
-  .neu-button-primary:hover {
-    background: linear-gradient(145deg, 
-      hsl(var(--primary)), 
-      hsl(var(--primary) / 0.9));
-    box-shadow: var(--neu-shadow-hover);
+  .macos-button:active {
+    transform: translateY(0px);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
   }
 }
 
