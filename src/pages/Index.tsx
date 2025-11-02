@@ -51,7 +51,7 @@ const Index = () => {
           </div>
 
           <div className="space-y-3">
-            <ThemeToggle />
+            <ThemeToggle open={open} />
             <a
               href="https://forms.gle/hPaXQNf8nhrdas3M8"
               target="_blank"
