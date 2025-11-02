@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { useState, memo, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-// ✅ Timeline component (integrated directly here)
 const Timeline = ({ data }: { data: { title: string; content: React.ReactNode }[] }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -49,7 +48,7 @@ const Timeline = ({ data }: { data: { title: string; content: React.ReactNode }[
           </div>
         ))}
 
-        {/* Animated scroll line */}
+        {/* Scroll line */}
         <div
           style={{ height: height + "px" }}
           className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] 
@@ -68,7 +67,6 @@ const Timeline = ({ data }: { data: { title: string; content: React.ReactNode }[
   );
 };
 
-// ✅ Join Section
 const Join = memo(() => {
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
 
@@ -87,14 +85,13 @@ const Join = memo(() => {
     },
   ];
 
-  // ✅ Icons for phases
   const icons = [FileText, Calendar, Users2, CheckCircle2];
 
   return (
     <section id="join" className="py-12 sm:py-16 md:py-20 relative">
       <div className="container mx-auto px-4">
         {/* Heading */}
-        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+        <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-glow">
             Join CODE VIVEKS
           </h2>
@@ -103,7 +100,7 @@ const Join = memo(() => {
           </p>
         </div>
 
-        {/* 🌀 Timeline */}
+        {/* Timeline */}
         <div className="mb-16">
           <h3 className="text-xl sm:text-2xl font-bold text-center mb-8 text-glow-secondary">
             Selection Process
@@ -139,7 +136,7 @@ const Join = memo(() => {
         </div>
 
         {/* Apply Button */}
-        <div className="glass-strong rounded-2xl p-6 sm:p-8 neon-border text-center mb-12 animate-fade-in">
+        <div className="glass-strong rounded-2xl p-6 sm:p-8 neon-border text-center mb-12">
           <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-glow">Ready to Apply?</h3>
           <Button
             size="lg"
@@ -152,7 +149,7 @@ const Join = memo(() => {
 
         {/* Benefits & Eligibility */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="glass rounded-2xl p-6 neon-border-secondary animate-slide-up">
+          <div className="glass rounded-2xl p-6 neon-border-secondary">
             <h4 className="text-lg sm:text-xl font-bold mb-4 text-glow-secondary">
               Member Benefits
             </h4>
@@ -166,10 +163,7 @@ const Join = memo(() => {
             </ul>
           </div>
 
-          <div
-            className="glass rounded-2xl p-6 neon-border animate-slide-up"
-            style={{ animationDelay: "0.1s" }}
-          >
+          <div className="glass rounded-2xl p-6 neon-border">
             <h4 className="text-lg sm:text-xl font-bold mb-4 text-glow">
               Eligibility Criteria
             </h4>
@@ -185,7 +179,7 @@ const Join = memo(() => {
         </div>
 
         {/* FAQ */}
-        <div className="glass-strong rounded-2xl p-6 sm:p-8 neon-border animate-fade-in">
+        <div className="glass-strong rounded-2xl p-6 sm:p-8 neon-border">
           <h3 className="text-xl sm:text-2xl font-bold mb-6 text-center text-glow">
             Frequently Asked Questions
           </h3>
@@ -205,7 +199,7 @@ const Join = memo(() => {
                   )}
                 </div>
                 {faqOpen === index && (
-                  <div className="px-4 pb-4 text-sm sm:text-base text-muted-foreground animate-slide-up">
+                  <div className="px-4 pb-4 text-sm sm:text-base text-muted-foreground">
                     {faq.a}
                   </div>
                 )}

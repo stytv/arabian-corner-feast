@@ -80,7 +80,6 @@ const Index = () => {
                   key={`nav-${link.label}`}
                   onClick={() => scrollToSection(link.href)}
                   className="cursor-pointer"
-                  data-testid={`link-${link.label.toLowerCase()}`}
                 >
                   <SidebarLink link={link} />
                 </div>
@@ -97,7 +96,6 @@ const Index = () => {
               className="glass-btn flex items-center justify-center gap-2 font-semibold text-sm text-primary-foreground rounded-xl py-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              data-testid="button-join-now"
             >
               <UserPlus className="h-5 w-5 shrink-0" />
               {open && <span>Join Now</span>}
@@ -106,12 +104,12 @@ const Index = () => {
         </SidebarBody>
       </Sidebar>
 
-      <main className="flex-1 w-full lg:ml-[72px] px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 space-y-6 sm:space-y-8 md:space-y-10">
+      <main className="flex-1 w-full lg:ml-[72px] px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 space-y-10">
         {sections.map((section) => (
           <section
             key={section.id}
             id={section.id}
-            className={`${section.style} rounded-xl sm:rounded-2xl hover-lift p-3 sm:p-4 md:p-6 lg:p-8 transition-all duration-700`}
+            className={`${section.style} rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 lg:p-8 transition-all duration-300`}
           >
             {section.component}
           </section>
@@ -130,16 +128,12 @@ const Logo = memo(() => (
     <img
       src={logo}
       alt="CODE VIVEKS Logo"
-      className="h-8 sm:h-10 w-auto drop-shadow-lg hover:drop-shadow-glow transition-all duration-300"
+      className="h-8 sm:h-10 w-auto drop-shadow-lg transition-all duration-300"
       loading="eager"
     />
-    <motion.span
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="font-bold whitespace-pre text-gradient text-base sm:text-lg"
-    >
+    <span className="font-bold whitespace-pre text-gradient text-base sm:text-lg">
       CODE VIVEKS
-    </motion.span>
+    </span>
   </motion.div>
 ));
 
@@ -149,12 +143,11 @@ const LogoIcon = memo(() => (
   <motion.div
     className="relative z-20 flex items-center justify-center py-1"
     whileHover={{ scale: 1.1 }}
-    transition={{ type: "spring", stiffness: 400, damping: 10 }}
   >
     <img
       src={logo}
       alt="CODE VIVEKS Icon"
-      className="h-8 sm:h-10 w-auto drop-shadow-lg hover:drop-shadow-glow transition-all duration-300"
+      className="h-8 sm:h-10 w-auto drop-shadow-lg transition-all duration-300"
       loading="eager"
     />
   </motion.div>
@@ -168,11 +161,9 @@ const ThemeToggle = memo(({ open }: { open: boolean }) => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="flex items-center gap-2 px-4 py-2.5 rounded-xl glass border-0 hover:bg-white/5 active:bg-white/10 transition-all w-full backdrop-blur-sm neumorphic-btn"
+      className="flex items-center gap-2 px-4 py-2.5 rounded-xl glass border-0 hover:bg-white/5 active:bg-white/10 transition-all w-full backdrop-blur-sm"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
-      data-testid="button-theme-toggle"
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
     >
       {theme === "dark" ? (
         <Sun className="h-5 w-5 shrink-0 text-primary" />
@@ -180,14 +171,9 @@ const ThemeToggle = memo(({ open }: { open: boolean }) => {
         <Moon className="h-5 w-5 shrink-0 text-primary" />
       )}
       {open && (
-        <motion.span
-          className="text-sm font-semibold"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.1 }}
-        >
+        <span className="text-sm font-semibold">
           {theme === "dark" ? "Light" : "Dark"}
-        </motion.span>
+        </span>
       )}
     </motion.button>
   );
