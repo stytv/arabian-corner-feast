@@ -1,4 +1,14 @@
+import React from "react";
 import { cn } from "@/lib/utils";
+
+export interface BentoGridItemProps {
+  className?: string;
+  title?: string | React.ReactNode;
+  description?: string | React.ReactNode;
+  header?: React.ReactNode;
+  icon?: React.ReactNode;
+  onClick?: () => void;
+}
 
 export const BentoGrid = ({
   className,
@@ -10,8 +20,9 @@ export const BentoGrid = ({
   return (
     <div
       className={cn(
-        "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3",
-        className,
+        // Changed from fixed height to auto-resizing grid
+        "mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-3",
+        className
       )}
     >
       {children}
@@ -19,39 +30,41 @@ export const BentoGrid = ({
   );
 };
 
-export const BentoGridItem = ({
+export const BentoGridItem = React.memo(function BentoGridItem({
   className,
   title,
   description,
   header,
   icon,
   onClick,
-}: {
-  className?: string;
-  title?: string | React.ReactNode;
-  description?: string | React.ReactNode;
-  header?: React.ReactNode;
-  icon?: React.ReactNode;
-  onClick?: () => void;
-}) => {
+}: BentoGridItemProps) {
   return (
     <div
       onClick={onClick}
       className={cn(
-        "group/bento row-span-1 flex flex-col justify-between space-y-4 rounded-xl glass-strong neon-border p-4 transition duration-200 hover:scale-105 cursor-pointer",
-        className,
+        "group relative flex flex-col justify-between rounded-xl glass-strong neon-border p-5 transition-all duration-300 hover:scale-[1.02] hover:z-10 cursor-pointer overflow-hidden",
+        // Allow card to expand naturally
+        "min-h-[14rem] sm:min-h-[16rem]",
+        className
       )}
     >
-      {header}
-      <div className="transition duration-200 group-hover/bento:translate-x-2">
-        {icon}
-        <div className="mt-2 mb-2 font-sans font-bold text-foreground">
-          {title}
-        </div>
-        <div className="font-sans text-xs font-normal text-muted-foreground">
-          {description}
-        </div>
+      {header && (
+        <div className="mb-3 overflow-hidden text-ellipsis">{header}</div>
+      )}
+
+      <div className="transition-transform duration-200 group-hover:translate-x-1">
+        {icon && <div className="mb-2">{icon}</div>}
+        {title && (
+          <h3 className="font-bold text-foreground text-lg sm:text-xl mb-1">
+            {title}
+          </h3>
+        )}
+        {description && (
+          <p className="text-sm text-muted-foreground leading-snug">
+            {description}
+          </p>
+        )}
       </div>
     </div>
   );
-};
+});
