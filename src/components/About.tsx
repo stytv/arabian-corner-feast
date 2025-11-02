@@ -1,6 +1,7 @@
 import { clubInfo } from "@/data/content";
 import { Target, Lightbulb } from "lucide-react";
 import * as Icons from "lucide-react";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const About = () => {
   return (
@@ -13,7 +14,8 @@ const About = () => {
 
         {/* Vision & Mission Cards */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <div className="glass-strong rounded-2xl p-8 neon-border hover:scale-[1.02] transition-transform animate-slide-up">
+          <AnimatedSection direction="left">
+            <div className="glass-strong rounded-2xl p-8 neon-border hover:scale-[1.02] transition-transform">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 rounded-lg bg-primary/20 neon-border">
                 <Lightbulb className="w-6 h-6 text-primary" />
@@ -21,9 +23,11 @@ const About = () => {
               <h3 className="text-2xl font-bold text-glow">Our Vision</h3>
             </div>
             <p className="text-foreground/80 leading-relaxed">{clubInfo.vision}</p>
-          </div>
+            </div>
+          </AnimatedSection>
 
-          <div className="glass-strong rounded-2xl p-8 neon-border-secondary hover:scale-[1.02] transition-transform animate-slide-up" style={{ animationDelay: "0.1s" }}>
+          <AnimatedSection direction="right" delay={0.2}>
+            <div className="glass-strong rounded-2xl p-8 neon-border-secondary hover:scale-[1.02] transition-transform">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 rounded-lg bg-secondary/20 neon-border-secondary">
                 <Target className="w-6 h-6 text-secondary" />
@@ -31,7 +35,8 @@ const About = () => {
               <h3 className="text-2xl font-bold text-glow-secondary">Our Mission</h3>
             </div>
             <p className="text-foreground/80 leading-relaxed">{clubInfo.mission}</p>
-          </div>
+            </div>
+          </AnimatedSection>
         </div>
 
         {/* Core Objectives */}

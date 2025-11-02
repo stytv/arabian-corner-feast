@@ -77,7 +77,7 @@ const Teams = () => {
                   >
                     {(() => {
                       const IconComponent =
-                        Icons[active.icon as keyof typeof Icons];
+                        Icons[active.icon as keyof typeof Icons] as React.ComponentType<{ className?: string }>;
                       return (
                         <IconComponent
                           className={`w-8 h-8 ${
@@ -151,7 +151,7 @@ const Teams = () => {
           >
             {clubInfo.teams.map((team, index) => {
               const IconComponent =
-                Icons[team.icon as keyof typeof Icons];
+                Icons[team.icon as keyof typeof Icons] as React.ComponentType<{ className?: string }>;
 
               return (
                 <motion.li

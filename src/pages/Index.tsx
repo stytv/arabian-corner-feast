@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
-import { Home, Info, Users, Calendar, Award, UserPlus, FolderOpen, Mail } from "lucide-react";
+import { Home, Info, Users, Calendar, Award, UserPlus, FolderOpen, Mail, Moon, Sun } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "@/contexts/ThemeContext";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Teams from "@/components/Teams";
@@ -49,7 +50,8 @@ const Index = () => {
             </div>
           </div>
 
-          <div>
+          <div className="space-y-3">
+            <ThemeToggle />
             <a
               href="https://forms.gle/hPaXQNf8nhrdas3M8"
               target="_blank"
@@ -107,6 +109,30 @@ const LogoIcon = () => {
         className="h-10 w-auto drop-shadow-glow"
       />
     </div>
+  );
+};
+
+const ThemeToggle = ({ open }: { open: boolean }) => {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <motion.button
+      onClick={toggleTheme}
+      className="flex items-center gap-2 px-4 py-3 rounded-lg bg-muted hover:bg-muted/80 transition-all hover:scale-105 w-full"
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+    >
+      {theme === "dark" ? (
+        <Sun className="h-5 w-5 shrink-0 text-primary" />
+      ) : (
+        <Moon className="h-5 w-5 shrink-0 text-primary" />
+      )}
+      {open && (
+        <span className="text-sm font-medium">
+          {theme === "dark" ? "Light Mode" : "Dark Mode"}
+        </span>
+      )}
+    </motion.button>
   );
 };
 

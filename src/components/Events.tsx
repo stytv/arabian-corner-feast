@@ -1,5 +1,6 @@
 import { clubInfo } from "@/data/content";
 import { Calendar, Clock, Trophy, Users } from "lucide-react";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const Events = () => {
   const eventCategories = [
@@ -21,10 +22,9 @@ const Events = () => {
           {eventCategories.map((category, index) => {
             const IconComponent = category.icon;
             return (
-              <div
-                key={index}
-                className="glass-strong rounded-2xl p-6 neon-border hover:scale-[1.02] transition-transform animate-slide-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
+              <AnimatedSection key={index} direction={index % 2 === 0 ? "left" : "right"} delay={index * 0.1}>
+                <div
+                className="glass-strong rounded-2xl p-6 neon-border hover:scale-[1.02] transition-transform h-full"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`p-2 rounded-lg ${category.color === "primary" ? "bg-primary/20" : category.color === "secondary" ? "bg-secondary/20" : "bg-accent/20"}`}>
@@ -40,7 +40,8 @@ const Events = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+                </div>
+              </AnimatedSection>
             );
           })}
         </div>

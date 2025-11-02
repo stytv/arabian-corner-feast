@@ -12,6 +12,18 @@ All colors MUST be HSL.
     --background: 0 0% 0%;
     --foreground: 0 0% 95%;
 
+    /* Light mode colors */
+    &:not(.dark) {
+      --background: 210 40% 98%;
+      --foreground: 222 47% 11%;
+      --card: 0 0% 100%;
+      --card-foreground: 222 47% 11%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 222 47% 11%;
+      --muted: 210 40% 96%;
+      --muted-foreground: 215 16% 47%;
+    }
+
     /* Glass cards with slight transparency */
     --card: 230 30% 8%;
     --card-foreground: 0 0% 95%;
