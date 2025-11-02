@@ -65,7 +65,7 @@ const Hero = memo(() => {
                 onClick={() =>
                   window.open(clubInfo.contact.googleForm, "_blank")
                 }
-                className="bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.05] transition-all animate-glow-pulse w-full sm:w-auto"
+                className="bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.05] transition-all w-full sm:w-auto"
                 data-testid="button-apply-now"
               >
                 Apply Now
