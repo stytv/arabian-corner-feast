@@ -112,24 +112,26 @@ export const clubInfo = {
     },
     {
       id: "Cybersecurity",
-      name: "Cybersecurity Tea,",
-      icon: "Database",
+      name: "Cybersecurity Team",
+      icon: "Shield",
       color: "secondary",
-      description: "Data structures and algorithms mastery",
+      description:
+        "Protecting systems, networks, and data through ethical and technical defense strategies.",
       lead: { name: "Pratheeka" },
       focus: [
-        "In-depth study of data structures",
-        "Algorithm design and analysis",
-        "Interview preparation strategies",
-        "System design fundamentals",
+        "Network security and ethical hacking",
+        "Threat analysis and risk management",
+        "Penetration testing and vulnerability assessment",
+        "Cyber forensics and incident response",
       ],
       outcomes: [
-        "Solve 500+ DSA problems",
-        "Master common interview patterns",
-        "Clear technical interviews at top companies",
-        "Strong problem-solving foundation",
+        "Understand real-world cyber threats and defenses",
+        "Perform ethical hacking and penetration testing",
+        "Develop secure coding and network practices",
+        "Be industry-ready for cybersecurity roles and certifications",
       ],
     },
+
     {
       id: "robotics",
       name: "Robotics",
