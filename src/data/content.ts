@@ -51,30 +51,12 @@ export const clubInfo = {
 
   teams: [
     {
-      id: "juniors",
-      name: "Juniors Team",
-      icon: "Rocket",
-      color: "primary",
-      description: "Foundation building for first and second-year students",
-      focus: [
-        "Programming fundamentals (C, C++, Python, Java)",
-        "Basic data structures and algorithms",
-        "Problem-solving techniques",
-        "Introduction to competitive programming platforms",
-      ],
-      outcomes: [
-        "Strong foundation in at least one programming language",
-        "Ability to solve 100+ basic coding problems",
-        "Understanding of fundamental DSA concepts",
-        "Ready for intermediate-level challenges",
-      ],
-    },
-    {
       id: "cp",
       name: "Competitive Programming",
       icon: "Code2",
       color: "secondary",
       description: "Advanced problem-solving and contest participation",
+      lead: { name: "Shiva" },
       focus: [
         "Advanced algorithms and data structures",
         "Contest strategies and time management",
@@ -94,6 +76,7 @@ export const clubInfo = {
       icon: "Globe",
       color: "accent",
       description: "Full-stack web application development",
+      lead: { name: "Dharun Teja" },
       focus: [
         "Frontend: React, Next.js, Tailwind CSS",
         "Backend: Node.js, Express, Django",
@@ -113,6 +96,7 @@ export const clubInfo = {
       icon: "Brain",
       color: "primary",
       description: "Machine learning and artificial intelligence projects",
+      lead: { name: "Advait" },
       focus: [
         "Machine learning fundamentals",
         "Deep learning with TensorFlow and PyTorch",
@@ -127,11 +111,12 @@ export const clubInfo = {
       ],
     },
     {
-      id: "dsa",
-      name: "DSA Team",
+      id: "Cybersecurity",
+      name: "Cybersecurity Tea,",
       icon: "Database",
       color: "secondary",
       description: "Data structures and algorithms mastery",
+      lead: { name: "Pratheeka" },
       focus: [
         "In-depth study of data structures",
         "Algorithm design and analysis",
@@ -151,6 +136,7 @@ export const clubInfo = {
       icon: "Bot",
       color: "accent",
       description: "Design, build, and program intelligent robots",
+      lead: { name: "Ayaan" },
       focus: [
         "Mechanical design and prototyping",
         "Sensor and motor control systems",
@@ -264,6 +250,7 @@ export const clubInfo = {
     structure: [
       {
         role: "President",
+        name: "M. Sai Deekshith",
         responsibilities: [
           "Oversee all club activities and strategic direction",
           "Represent CODE VIVEKS in official and inter-club functions",
@@ -272,6 +259,7 @@ export const clubInfo = {
       },
       {
         role: "Secretary",
+        name: "C. Sakshi",
         responsibilities: [
           "Maintain official records, meeting minutes, and correspondence",
           "Coordinate communication between teams and leadership",
@@ -280,6 +268,7 @@ export const clubInfo = {
       },
       {
         role: "Vice-Secretary & Treasurer",
+        name: "Sakshi & Nikhil",
         responsibilities: [
           "Assist Secretary in club operations",
           "Manage finances, budgets, and expense tracking",
@@ -288,6 +277,7 @@ export const clubInfo = {
       },
       {
         role: "Technical Lead",
+        name: "Younus Syed",
         responsibilities: [
           "Lead all technical projects and development initiatives",
           "Mentor members in coding and emerging technologies",
@@ -296,6 +286,7 @@ export const clubInfo = {
       },
       {
         role: "Event & Workshop Head",
+        name: "Nikhil",
         responsibilities: [
           "Plan, organize, and execute technical workshops and hackathons",
           "Coordinate logistics for club events",
@@ -304,6 +295,7 @@ export const clubInfo = {
       },
       {
         role: "PR & Outreach Head",
+        name: "Sirisha",
         responsibilities: [
           "Manage public relations and social media outreach",
           "Enhance CODE VIVEKS' visibility in the community",

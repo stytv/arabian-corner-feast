@@ -61,7 +61,7 @@ const Join = memo(() => {
           <Button
             size="lg"
             onClick={() => window.open(clubInfo.contact.googleForm, "_blank")}
-            className="bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold text-base sm:text-lg px-8 sm:px-12 py-5 sm:py-6 hover:scale-105 transition-transform w-full sm:w-auto"
+            className="bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold text-base sm:text-lg px-8 sm:px-12 py-5 sm:py-6 animate-glow-pulse hover:scale-105 transition-transform w-full sm:w-auto"
             data-testid="button-apply-form"
           >
             Apply Now via Google Form

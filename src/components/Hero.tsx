@@ -104,7 +104,7 @@ const Hero = memo(() => {
 
             <div className="absolute -top-3 -right-3 sm:-top-5 sm:-right-5 glass-strong rounded-xl p-2 sm:p-3 neon-border-secondary animate-float text-xs sm:text-sm">
               <div className="font-semibold text-secondary">
-                6 Teams
+                5 Teams
               </div>
             </div>
 
