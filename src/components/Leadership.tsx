@@ -91,52 +91,52 @@ const Leadership = memo(() => {
   ], []);
 
   return (
-    <section id="leadership" className="py-20 relative">
+    <section id="leadership" className="py-12 sm:py-16 md:py-20 relative">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-glow">
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-glow">
             Core Community
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base sm:text-lg">
             Meet the minds behind CODE VIVEKS
           </p>
         </div>
 
         <AnimatedTestimonials testimonials={leadershipTestimonials} autoplay />
 
-        <div className="text-center mt-16 mb-12">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4 text-glow">
+        <div className="text-center mt-12 sm:mt-16 mb-8 sm:mb-12">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-glow">
             Organizational Structure
           </h3>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base sm:text-lg px-4">
             Organized hierarchy for effective management
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto space-y-4">
-          <div className="glass-strong rounded-2xl p-6 neon-border text-center animate-slide-up">
+          <div className="glass-strong rounded-2xl p-4 sm:p-6 neon-border text-center animate-slide-up">
             <div className="inline-flex items-center gap-2 mb-2">
-              <Users className="w-5 h-5 text-primary" />
-              <h3 className="text-2xl font-bold text-glow">President</h3>
+              <Users className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+              <h3 className="text-xl sm:text-2xl font-bold text-glow">President</h3>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               Overall Club Leadership
             </p>
           </div>
 
           <div className="flex justify-center">
-            <div className="w-0.5 h-8 bg-gradient-to-b from-primary to-secondary" />
+            <div className="w-0.5 h-6 sm:h-8 bg-gradient-to-b from-primary to-secondary" />
           </div>
 
-          <div className="glass rounded-xl p-4 border border-secondary/30 text-center animate-fade-in">
-            <h4 className="font-semibold text-secondary mb-2">
+          <div className="glass rounded-xl p-3 sm:p-4 border border-secondary/30 text-center animate-fade-in">
+            <h4 className="font-semibold text-secondary mb-2 text-sm sm:text-base">
               Core Committee
             </h4>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3">
               {clubInfo.leadership.structure.slice(1).map((position, index) => (
                 <div
                   key={`position-${position.role}-${index}`}
-                  className={`glass-strong rounded-lg p-3 cursor-pointer hover:scale-105 transition-all neon-border ${
+                  className={`glass-strong rounded-lg p-2 sm:p-3 cursor-pointer hover:scale-105 transition-all neon-border ${
                     expandedRole === position.role ? "bg-primary/10" : ""
                   }`}
                   onClick={() =>
@@ -146,11 +146,11 @@ const Leadership = memo(() => {
                   }
                   data-testid={`role-${position.role.toLowerCase().replace(/\s+/g, '-')}`}
                 >
-                  <p className="text-sm font-semibold mb-1">{position.role}</p>
+                  <p className="text-xs sm:text-sm font-semibold mb-1 leading-tight">{position.role}</p>
                   {expandedRole === position.role ? (
-                    <ChevronUp className="w-4 h-4 mx-auto text-primary" />
+                    <ChevronUp className="w-3 h-3 sm:w-4 sm:h-4 mx-auto text-primary" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 mx-auto text-muted-foreground" />
+                    <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 mx-auto text-muted-foreground" />
                   )}
                 </div>
               ))}
@@ -158,8 +158,8 @@ const Leadership = memo(() => {
           </div>
 
           {expandedRole && (
-            <div className="glass-strong rounded-2xl p-6 neon-border animate-slide-up">
-              <h4 className="text-xl font-bold mb-4 text-primary">
+            <div className="glass-strong rounded-2xl p-4 sm:p-6 neon-border animate-slide-up">
+              <h4 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-primary">
                 {expandedRole} Responsibilities
               </h4>
               <ul className="space-y-2 text-left">
@@ -168,7 +168,7 @@ const Leadership = memo(() => {
                   ?.responsibilities.map((resp, index) => (
                     <li key={`resp-${index}`} className="flex items-start gap-2">
                       <span className="text-secondary mt-1">▸</span>
-                      <span className="text-foreground/80">{resp}</span>
+                      <span className="text-sm sm:text-base text-foreground/80">{resp}</span>
                     </li>
                   ))}
               </ul>
@@ -176,12 +176,12 @@ const Leadership = memo(() => {
           )}
 
           <div className="flex justify-center">
-            <div className="w-0.5 h-8 bg-gradient-to-b from-secondary to-primary" />
+            <div className="w-0.5 h-6 sm:h-8 bg-gradient-to-b from-secondary to-primary" />
           </div>
 
-          <div className="glass rounded-xl p-6 border border-primary/30 text-center animate-fade-in">
-            <h4 className="font-semibold text-primary mb-3">6 Team Leads</h4>
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-2">
+          <div className="glass rounded-xl p-4 sm:p-6 border border-primary/30 text-center animate-fade-in">
+            <h4 className="font-semibold text-primary mb-3 text-sm sm:text-base">6 Team Leads</h4>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
               {clubInfo.teams.map((team, index) => (
                 <div
                   key={`team-${team.name}-${index}`}
@@ -191,7 +191,7 @@ const Leadership = memo(() => {
                 </div>
               ))}
             </div>
-            <p className="text-sm text-muted-foreground mt-3">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-3">
               {clubInfo.leadership.teamLeads}
             </p>
           </div>

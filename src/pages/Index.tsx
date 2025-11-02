@@ -101,12 +101,12 @@ const Index = () => {
         </SidebarBody>
       </Sidebar>
 
-      <main className="flex-1 w-full lg:ml-[72px] px-6 py-10 space-y-10">
+      <main className="flex-1 w-full lg:ml-[72px] px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 space-y-6 sm:space-y-8 md:space-y-10">
         {sections.map((section, i) => (
           <motion.section
             key={section.id}
             id={section.id}
-            className={`${section.style} rounded-2xl hover-lift scroll-reveal p-4 md:p-8 transition-all duration-700 content-visibility-auto`}
+            className={`${section.style} rounded-xl sm:rounded-2xl hover-lift scroll-reveal p-3 sm:p-4 md:p-6 lg:p-8 transition-all duration-700 content-visibility-auto`}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -129,13 +129,13 @@ const Logo = memo(() => (
     <img
       src={logo}
       alt="CODE VIVEKS Logo"
-      className="h-10 w-auto drop-shadow-lg hover:drop-shadow-glow transition-all duration-300"
+      className="h-8 sm:h-10 w-auto drop-shadow-lg hover:drop-shadow-glow transition-all duration-300"
       loading="eager"
     />
     <motion.span
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="font-bold whitespace-pre text-gradient text-lg"
+      className="font-bold whitespace-pre text-gradient text-base sm:text-lg"
     >
       CODE VIVEKS
     </motion.span>
@@ -153,7 +153,7 @@ const LogoIcon = memo(() => (
     <img
       src={logo}
       alt="CODE VIVEKS Icon"
-      className="h-10 w-auto drop-shadow-lg hover:drop-shadow-glow transition-all duration-300"
+      className="h-8 sm:h-10 w-auto drop-shadow-lg hover:drop-shadow-glow transition-all duration-300"
       loading="eager"
     />
   </motion.div>
