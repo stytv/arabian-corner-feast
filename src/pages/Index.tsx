@@ -28,10 +28,12 @@ import Join from "@/components/Join";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import ArtisticBackground from "@/components/ArtisticBackground";
+import Preloader from "@/components/Preloader"; // ✅ Added preloader import
 import logo from "@/assets/logo.png";
 
 const Index = () => {
   const [open, setOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false); // ✅ Preloader state
 
   const links = [
     { label: "Home", href: "#hero", icon: <Home className="h-5 w-5 shrink-0 text-primary" /> },
@@ -60,6 +62,9 @@ const Index = () => {
     { id: "projects", component: <Projects />, style: "glass animate-scaleIn" },
     { id: "contact", component: <Contact />, style: "neumorphic-soft animate-fadeInUp" },
   ];
+
+  // ✅ Show Preloader until ready
+  if (!isLoaded) return <Preloader onFinish={() => setIsLoaded(true)} />;
 
   return (
     <div className="relative min-h-screen flex w-full bg-background text-foreground overflow-x-hidden transition-colors duration-500">
