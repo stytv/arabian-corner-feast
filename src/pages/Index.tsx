@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, memo } from "react";
 import {
   Sidebar,
@@ -28,12 +29,12 @@ import Join from "@/components/Join";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import ArtisticBackground from "@/components/ArtisticBackground";
-import Preloader from "@/components/Preloader"; // ✅ Added preloader import
+import Preloader from "@/components/Preloader";
 import logo from "@/assets/logo.png";
 
 const Index = () => {
   const [open, setOpen] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false); // ✅ Preloader state
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const links = [
     { label: "Home", href: "#hero", icon: <Home className="h-5 w-5 shrink-0 text-primary" /> },
@@ -53,17 +54,16 @@ const Index = () => {
   };
 
   const sections = [
-    { id: "hero", component: <Hero />, style: "glass animate-scaleIn" },
-    { id: "about", component: <About />, style: "neumorphic-soft animate-fadeInUp" },
-    { id: "leadership", component: <Leadership />, style: "glass animate-slideInLeft" },
-    { id: "teams", component: <Teams />, style: "neumorphic-soft animate-fadeInUp" },
-    { id: "events", component: <Events />, style: "glass animate-slideInRight" },
-    { id: "join", component: <Join />, style: "neumorphic-soft animate-fadeInUp" },
-    { id: "projects", component: <Projects />, style: "glass animate-scaleIn" },
-    { id: "contact", component: <Contact />, style: "neumorphic-soft animate-fadeInUp" },
+    { id: "hero", component: <Hero />, style: "glass" },
+    { id: "about", component: <About />, style: "neumorphic-soft" },
+    { id: "leadership", component: <Leadership />, style: "glass" },
+    { id: "teams", component: <Teams />, style: "neumorphic-soft" },
+    { id: "events", component: <Events />, style: "glass" },
+    { id: "join", component: <Join />, style: "neumorphic-soft" },
+    { id: "projects", component: <Projects />, style: "glass" },
+    { id: "contact", component: <Contact />, style: "neumorphic-soft" },
   ];
 
-  // ✅ Show Preloader until ready
   if (!isLoaded) return <Preloader onFinish={() => setIsLoaded(true)} />;
 
   return (
@@ -107,18 +107,14 @@ const Index = () => {
       </Sidebar>
 
       <main className="flex-1 w-full lg:ml-[72px] px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 space-y-6 sm:space-y-8 md:space-y-10">
-        {sections.map((section, i) => (
-          <motion.section
+        {sections.map((section) => (
+          <section
             key={section.id}
             id={section.id}
-            className={`${section.style} rounded-xl sm:rounded-2xl hover-lift scroll-reveal p-3 sm:p-4 md:p-6 lg:p-8 transition-all duration-700 content-visibility-auto`}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
+            className={`${section.style} rounded-xl sm:rounded-2xl hover-lift p-3 sm:p-4 md:p-6 lg:p-8 transition-all duration-700`}
           >
             {section.component}
-          </motion.section>
+          </section>
         ))}
       </main>
     </div>
