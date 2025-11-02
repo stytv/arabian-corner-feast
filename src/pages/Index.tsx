@@ -18,7 +18,7 @@ import {
   Moon,
   Sun,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -64,12 +64,27 @@ const Index = () => {
     { id: "contact", component: <Contact />, style: "neumorphic-soft" },
   ];
 
-  if (!isLoaded) return <Preloader onFinish={() => setIsLoaded(true)} />;
-
   return (
     <div className="relative min-h-screen flex w-full bg-background text-foreground overflow-x-hidden transition-colors duration-500">
       <ArtisticBackground />
 
+      {/* 🌀 Preloader Overlay */}
+      <AnimatePresence>
+        {!isLoaded && (
+          <motion.div
+            key="preloader"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-background"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          >
+            <Preloader onFinish={() => setIsLoaded(true)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* 🧭 Sidebar */}
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10 glass-strong rounded-2xl border border-white/10 shadow-lg shadow-black/20 backdrop-blur-xl">
           <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
@@ -104,12 +119,17 @@ const Index = () => {
         </SidebarBody>
       </Sidebar>
 
-      <main className="flex-1 w-full lg:ml-[72px] px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 space-y-10">
+      {/* 🧱 Main Page Content (pre-rendered under loader) */}
+      <main
+        className={`flex-1 w-full lg:ml-[72px] px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 space-y-10 transition-opacity duration-700 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
         {sections.map((section) => (
           <section
             key={section.id}
             id={section.id}
-            className={`${section.style} rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 lg:p-8 transition-all duration-300`}
+            className={`${section.style} rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 lg:p-8`}
           >
             {section.component}
           </section>
@@ -118,6 +138,8 @@ const Index = () => {
     </div>
   );
 };
+
+/* 🧩 Components */
 
 const Logo = memo(() => (
   <motion.div
