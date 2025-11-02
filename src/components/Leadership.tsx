@@ -6,7 +6,7 @@ import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 // ✅ Leadership images (all local assets)
 import President from "@/assets/president.jpg";
 import Secretary from "@/assets/Secretary.jpg";
-import ViceAndTreasurer from "@/assets/viseandtreasurer.jpg";
+import ViceAndTreasurer from "@/assets/visetreasurer.jpg";
 import Event from "@/assets/event.jpg";
 import PROutreachHead from "@/assets/pr.jpg";
 import OperationsHead from "@/assets/operations.jpg";
