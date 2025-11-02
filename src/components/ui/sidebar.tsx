@@ -97,13 +97,16 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-screen px-4 py-4 hidden lg:flex lg:flex-col glass-strong border-r border-primary/20 w-[300px] shrink-0 fixed left-0 top-0 z-50",
+          "h-screen px-3 py-4 hidden lg:flex lg:flex-col glass-strong border-r border-white/10 w-[280px] shrink-0 fixed left-0 top-0 z-50",
           className
         )}
         animate={{
-          width: animate ? (open ? "300px" : "80px") : "300px",
+          width: animate ? (open ? "280px" : "72px") : "280px",
         }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
+        transition={{ 
+          duration: 0.25, 
+          ease: [0.4, 0, 0.2, 1] // macOS-style cubic bezier
+        }}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
       >
@@ -160,14 +163,15 @@ export const SidebarLink = ({
     <a
       href={link.href}
       className={cn(
-        "flex items-center justify-start gap-2 group/sidebar py-3 px-2 rounded-lg hover:bg-primary/10 transition-all hover:scale-105",
+        "flex items-center justify-start gap-3 group/sidebar py-2.5 px-3 rounded-lg hover:bg-white/5 active:bg-white/10 transition-all duration-200 backdrop-blur-sm",
         className
       )}
       {...props}
     >
       <motion.div
-        whileHover={{ scale: 1.1, rotate: 5 }}
-        transition={{ duration: 0.2 }}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
       >
         {link.icon}
       </motion.div>
@@ -177,8 +181,8 @@ export const SidebarLink = ({
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        transition={{ duration: 0.2 }}
-        className="text-foreground text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+        transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+        className="text-foreground text-sm font-medium group-hover/sidebar:translate-x-0.5 transition-transform duration-200 whitespace-pre inline-block !p-0 !m-0"
       >
         {link.label}
       </motion.span>

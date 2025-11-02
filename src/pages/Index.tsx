@@ -41,7 +41,7 @@ const Index = () => {
         <SidebarBody className="justify-between gap-10">
           <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
             {open ? <Logo /> : <LogoIcon />}
-            <div className="mt-8 flex flex-col gap-2">
+            <div className="mt-8 flex flex-col gap-1">
               {links.map((link, idx) => (
                 <div key={idx} onClick={() => scrollToSection(link.href)}>
                   <SidebarLink link={link} />
@@ -50,22 +50,24 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-2">
             <ThemeToggle open={open} />
-            <a
+            <motion.a
               href="https://forms.gle/hPaXQNf8nhrdas3M8"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold text-sm animate-glow-pulse hover:scale-105 transition-transform"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl macos-button text-primary-foreground font-semibold text-sm"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <UserPlus className="h-5 w-5 shrink-0" />
               {open && <span>Join Now</span>}
-            </a>
+            </motion.a>
           </div>
         </SidebarBody>
       </Sidebar>
 
-      <main className="flex-1 w-full lg:ml-[80px]">
+      <main className="flex-1 w-full lg:ml-[72px]">
         <Hero />
         <About />
         <Leadership />
@@ -118,7 +120,7 @@ const ThemeToggle = ({ open }: { open: boolean }) => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="flex items-center gap-2 px-4 py-3 rounded-lg bg-muted hover:bg-muted/80 transition-all hover:scale-105 w-full"
+      className="flex items-center gap-2 px-4 py-2.5 rounded-xl glass border-0 hover:bg-white/5 active:bg-white/10 transition-all w-full backdrop-blur-sm"
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
@@ -128,8 +130,8 @@ const ThemeToggle = ({ open }: { open: boolean }) => {
         <Moon className="h-5 w-5 shrink-0 text-primary" />
       )}
       {open && (
-        <span className="text-sm font-medium">
-          {theme === "dark" ? "Light Mode" : "Dark Mode"}
+        <span className="text-sm font-semibold">
+          {theme === "dark" ? "Light" : "Dark"}
         </span>
       )}
     </motion.button>
